@@ -70,6 +70,9 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jmFile = new javax.swing.JMenu();
         jmiExit = new javax.swing.JMenuItem();
         jmEdit = new javax.swing.JMenu();
+        
+        total = 0;
+        firstNumber = true;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculator");
@@ -82,27 +85,33 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jbtn8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtn8.setForeground(new java.awt.Color(0, 0, 255));
         jbtn8.setText("8");
+        jbtn8.addActionListener(this);
 
         jbtnDecimal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnDecimal.setForeground(new java.awt.Color(0, 0, 255));
         jbtnDecimal.setText(".");
+        jbtnDecimal.addActionListener(this);
 
         jbtn9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtn9.setForeground(new java.awt.Color(0, 0, 255));
         jbtn9.setText("9");
-
+        jbtn9.addActionListener(this);
+        
         jbtn6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtn6.setForeground(new java.awt.Color(0, 0, 255));
         jbtn6.setText("6");
-
+        jbtn6.addActionListener(this);
+        
         jbtn5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtn5.setForeground(new java.awt.Color(0, 0, 255));
         jbtn5.setText("5");
+        jbtn5.addActionListener(this);
 
         jbtn4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtn4.setForeground(new java.awt.Color(0, 0, 255));
         jbtn4.setText("4");
-
+        jbtn4.addActionListener(this);
+      
         jbtnNegate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbtnNegate.setForeground(new java.awt.Color(0, 0, 255));
         jbtnNegate.setText("+/-");
@@ -130,10 +139,12 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jbtn3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtn3.setForeground(new java.awt.Color(0, 0, 255));
         jbtn3.setText("3");
+        jbtn3.addActionListener(this);
 
         jbtnDivision.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnDivision.setForeground(new java.awt.Color(255, 0, 0));
         jbtnDivision.setText("/");
+        jbtnDivision.addActionListener(this);
 
         jbtnMultiply.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnMultiply.setForeground(new java.awt.Color(255, 0, 0));
@@ -193,8 +204,10 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jlblMemoryStatus.setMinimumSize(new java.awt.Dimension(32, 32));
 
         jbtnBackspace.setText("Backspace");
+        jbtnBackspace.addActionListener(this);
 
         jbtnClear.setText("C");
+        jbtnClear.addActionListener(this);
 
         jbtnClearEverything.setText("CE");
 
@@ -371,9 +384,48 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 		if(task.equals("Exit"))
 			System.exit(EXIT_ON_CLOSE);
 		else if(task.equals("1"))
-			this.jtxtFldDisplay.setText(this.jtxtFldDisplay.getText().concat(task));
-		else if(task.equals("C"))
+			displayNumber(task);
+		else if(task.equals("2"))
+			displayNumber(task);
+		else if(task.equals("3"))
+			displayNumber(task);
+		else if(task.equals("4"))
+			displayNumber(task);
+		else if(task.equals("5"))
+			displayNumber(task);
+		else if(task.equals("6"))
+			displayNumber(task);
+		else if(task.equals("7"))
+			displayNumber(task);
+		else if(task.equals("8"))
+			displayNumber(task);
+		else if(task.equals("9"))
+			displayNumber(task);
+		else if(task.equals("0"))
+			displayNumber(task);
+		else if(task.equals("C")){
 			this.jtxtFldDisplay.setText("0");
+			firstNumber = true;
+		}
+		else if(task.equals("CE")){
+			this.jtxtFldDisplay.setText("0");
+			total = 0;
+			firstNumber = true;
+		}
+	}
+
+	/**
+	 * Display the currently pressed button number on the screen
+	 * @param task
+	 */
+	private void displayNumber(String task) {
+		// TODO Auto-generated method stub
+		if(!firstNumber)
+			this.jtxtFldDisplay.setText(this.jtxtFldDisplay.getText().concat(task));
+		else{
+			this.jtxtFldDisplay.setText(task);
+			firstNumber = false;
+		}
 	}
 
 	/**
@@ -422,4 +474,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
     private javax.swing.JMenuBar jmbMenus;
     private javax.swing.JMenuItem jmiExit;
     private javax.swing.JTextField jtxtFldDisplay;
+    
+    private int total;
+    private boolean firstNumber;
 }
