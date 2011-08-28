@@ -149,14 +149,17 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jbtnMultiply.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnMultiply.setForeground(new java.awt.Color(255, 0, 0));
         jbtnMultiply.setText("*");
+        jbtnMultiply.addActionListener(this);                
 
         jbtnAdd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnAdd.setForeground(new java.awt.Color(255, 0, 0));
         jbtnAdd.setText("+");
+        jbtnAdd.addActionListener(this);
 
         jbtnSubtract.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnSubtract.setForeground(new java.awt.Color(255, 0, 0));
         jbtnSubtract.setText("-");
+        jbtnSubtract.addActionListener(this);
 
         jbtnSquareRoot.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnSquareRoot.setForeground(new java.awt.Color(0, 0, 255));
@@ -381,28 +384,14 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 		// TODO Auto-generated method stub
 		String task = e.getActionCommand();
 		
-		if(task.equals("Exit"))
+		if(task.matches("[\\d]"))									//task contains a digit
+			displayNumber(task);
+		else if(task.matches("[/,*,+,-]"))
+			performOperation(task);
+		else if(task.equals("="))
+			calculate();
+		else if(task.equals("Exit"))
 			System.exit(EXIT_ON_CLOSE);
-		else if(task.equals("1"))
-			displayNumber(task);
-		else if(task.equals("2"))
-			displayNumber(task);
-		else if(task.equals("3"))
-			displayNumber(task);
-		else if(task.equals("4"))
-			displayNumber(task);
-		else if(task.equals("5"))
-			displayNumber(task);
-		else if(task.equals("6"))
-			displayNumber(task);
-		else if(task.equals("7"))
-			displayNumber(task);
-		else if(task.equals("8"))
-			displayNumber(task);
-		else if(task.equals("9"))
-			displayNumber(task);
-		else if(task.equals("0"))
-			displayNumber(task);
 		else if(task.equals("C")){
 			this.jtxtFldDisplay.setText("0");
 			firstNumber = true;
@@ -412,6 +401,48 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 			total = 0;
 			firstNumber = true;
 		}
+	}
+
+	/**
+	 * Displays the calculation based on the current operation
+	 */
+	private void calculate() {
+		if(operation.equals("+")){
+			
+			//get the currently displayed number and add it total
+			total += Integer.parseInt(this.jtxtFldDisplay.getText());			
+		}
+		else if(operation.equals("-")){
+			//get the currently displayed number and add it total
+			total -= Integer.parseInt(this.jtxtFldDisplay.getText());
+	}
+		
+		else if(operation.equals("*")){
+			//get the currently displayed number and multiply it total
+			total *= Integer.parseInt(this.jtxtFldDisplay.getText());
+		}
+		
+		else if(operation.equals("/")){
+			//get the currently displayed number and multiply it total
+			total /= Integer.parseInt(this.jtxtFldDisplay.getText());
+		}
+		
+		//display the result
+		this.jtxtFldDisplay.setText(Integer.toString(total));
+		//set firstNumber to true
+		firstNumber = true;
+		//clear operation
+		operation = "";
+	}
+
+	private void performOperation(String task) {
+		// TODO Auto-generated method stub
+		operation = task;
+		//get the currently displayed number and add it total
+		total = Integer.parseInt(this.jtxtFldDisplay.getText());
+		//set firstNumber to true
+		firstNumber = true;
+		
 	}
 
 	/**
@@ -477,4 +508,5 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
     
     private int total;
     private boolean firstNumber;
+    private String operation;
 }
