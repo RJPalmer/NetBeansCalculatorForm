@@ -160,7 +160,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 	    jmbMenus = new javax.swing.JMenuBar();
 	    jmFile = new javax.swing.JMenu();
 	    jmiExit = new javax.swing.JMenuItem();
-	    jmEdit = new javax.swing.JMenu();
+	    
 	    
 	    total = 0;
 	    memory = 0;
@@ -447,8 +447,8 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 	
 	    jmbMenus.add(jmFile);
 	
-	    jmEdit.setText("Edit");
-	    jmbMenus.add(jmEdit);
+	    
+	    
 	
 	    setJMenuBar(jmbMenus);
 	
@@ -569,7 +569,6 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
     private javax.swing.JButton jbtnSquareRoot;
     private javax.swing.JButton jbtnSubtract;
     private javax.swing.JLabel jlblMemoryStatus;
-    private javax.swing.JMenu jmEdit;
     private javax.swing.JMenu jmFile;
     private javax.swing.JMenuBar jmbMenus;
     private javax.swing.JMenuItem jmiExit;
