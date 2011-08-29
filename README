@@ -2,9 +2,11 @@ Netbeans Calculator Form
 by Robert J. Palmer
 August 2011
 
-Language: Java
+
 Description:
 A Basic calculator application using java swing forms from NetBeans IDE
+Language: Java
+Requirements: Latest Java version installed
 
 Features:
 As of 08/29/2011
