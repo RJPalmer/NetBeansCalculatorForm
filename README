@@ -7,5 +7,14 @@ Description:
 A Basic calculator application using java swing forms from NetBeans IDE
 
 Features:
-As of 08/27/2011
-None
+As of 08/29/2011
+Addition
+Subtraction
+Division
+Multiplication
+Square Root
+Percentage
+Inversion
+
+How To Run:
+Download the .jar file located in ./bin folder
