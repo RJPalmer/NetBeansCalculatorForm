@@ -86,7 +86,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 			total = 0;
 			firstNumber = true;
 		}
-	}
+	}//end actionPerformed
 
 	/**
 	 * Displays the calculation based on the current operation
@@ -118,7 +118,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 		firstNumber = true;
 		//clear operation
 		operation = "";
-	}
+	}//end calculate
 
 	/** This method is called from within the constructor to
 	 * initialize the form.
@@ -538,7 +538,8 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                 new CalculatorForm().setVisible(true);
             }
         });
-    }
+    }//end main
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtn0;
@@ -578,4 +579,4 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
     private double memory;
     private boolean firstNumber;
     private String operation;
-}//end main
+}//end CalculatorForm
